@@ -1,0 +1,305 @@
+# ============================================================
+# Design Prompt YAML — Dark Neon Luxury
+# 抽象化されたデザイン設計書
+# このファイルは特定のコンテンツに依存せず、
+# あらゆるサイトに転用可能なデザイントークンです。
+# ============================================================
+
+meta:
+  name: Dark Neon Luxury
+  version: 1.0.0
+  mood: "洗練・未来的・高級感・没入感"
+  keywords:
+    - dark-theme
+    - neon-accent
+    - glassmorphism
+    - minimalist
+    - premium
+  best_for:
+    - AI・テック系サービス
+    - ラグジュアリーブランド
+    - クリエイター・フリーランスのポートフォリオ
+    - SaaS・スタートアップのランディングページ
+    - 夜間・イベント系施設の紹介サイト
+
+
+# ============================================================
+# COLOR SYSTEM
+# ============================================================
+
+colors:
+  background:
+    primary:   "#08080f"   # 最も暗い。ベースとなる背景色
+    secondary: "#0f0f1a"   # セクション切り替え・微妙なコントラスト
+    surface:   "rgba(255, 255, 255, 0.04)"  # カード・パネルの背景
+    overlay:   "rgba(8, 8, 15, 0.80)"       # nav・modal の半透明背景
+
+  accent:
+    primary:       "#9b5de5"   # メインアクセント（紫系）
+    primary_dark:  "#6d28d9"   # ボタン・強調の暗いバリアント
+    secondary:     "#f97316"   # サブアクセント（オレンジ系）
+    secondary_dark: "#c2410c"  # オレンジの暗いバリアント
+    tertiary:      "#e879f9"   # グラデーション中間色（任意）
+
+  text:
+    primary:  "#f0eef6"   # 本文・見出し
+    muted:    "#8b8a9a"   # サブテキスト・ラベル・注釈
+    disabled: "#4a4a5a"   # 非アクティブ要素
+
+  border:
+    default:  "rgba(255, 255, 255, 0.08)"  # 通常のカード・区切り
+    hover:    "rgba(255, 255, 255, 0.20)"  # ホバー時
+    accent:   "rgba(155, 93, 229, 0.40)"  # アクセントボーダー（フォーカス・強調）
+    accent2:  "rgba(249, 115, 22, 0.25)"  # サブアクセントボーダー
+
+  semantic:
+    success: "#22c55e"
+    warning: "#facc15"
+    error:   "#ef4444"
+    info:    "#38bdf8"
+
+  gradient:
+    hero_text:   "linear-gradient(135deg, #9b5de5, #e879f9, #f97316)"
+    logo:        "linear-gradient(90deg, #9b5de5, #f97316)"
+    cta_button:  "linear-gradient(135deg, #6d28d9, #9b5de5)"
+    section_bg:  "linear-gradient(180deg, transparent, rgba(155,93,229,0.04), transparent)"
+    contact_box: "linear-gradient(135deg, rgba(155,93,229,0.10), rgba(15,15,26,0.80), rgba(249,115,22,0.08))"
+
+
+# ============================================================
+# TYPOGRAPHY
+# ============================================================
+
+typography:
+  font_family:
+    primary:   "'Inter', 'Noto Sans JP', sans-serif"
+    monospace: "'JetBrains Mono', 'Fira Code', monospace"  # コード表示用
+
+  scale:
+    hero:       "clamp(2.4rem, 5vw, 4rem)"   # メインキャッチコピー
+    h2:         "clamp(1.8rem, 3.5vw, 2.8rem)"
+    h3:         "1.05rem"
+    body:       "1rem"
+    small:      "0.875rem"
+    xs:         "0.78rem"
+    eyebrow:    "0.72rem"  # セクションラベル（大文字）
+
+  weight:
+    light:    300
+    regular:  400
+    medium:   500
+    semibold: 600
+    bold:     700
+
+  style:
+    hero_tracking:    "-0.02em"   # 見出しは字間を詰める
+    eyebrow_tracking: "0.20em"    # ラベルは字間を広げて上品に
+    eyebrow_case:     "uppercase"
+    line_height_body: 1.7
+    line_height_heading: 1.15
+
+
+# ============================================================
+# SPACING & LAYOUT
+# ============================================================
+
+spacing:
+  section_vertical: "120px"      # セクション間の余白
+  section_top_first: "100px"     # ファーストビューの上余白（navの高さ分）
+  container_max:    "1100px"     # コンテンツ最大幅
+  container_pad:    "32px"       # コンテナの左右パディング
+  card_gap:         "28px"       # カード間のgap
+  component_gap:    "16px"       # コンポーネント内の標準gap
+
+border_radius:
+  full:    "100px"   # ピル型ボタン・タグ
+  card:    "16px"    # カード・パネル
+  small:   "10px"    # バッジ・小要素
+  contact: "24px"    # CTAボックスなど大きめ要素
+
+
+# ============================================================
+# COMPONENT TOKENS
+# ============================================================
+
+components:
+
+  nav:
+    position: "fixed"
+    blur:     "20px"
+    bg:       "rgba(8, 8, 15, 0.70)"
+    border:   "1px solid rgba(255,255,255,0.07)"
+    height:   "60-70px"
+    style:    "glassmorphism / logo is gradient-text / links are muted and brighten on hover"
+
+  button:
+    primary:
+      bg:     "gradient: cta_button"
+      color:  "#ffffff"
+      glow:   "box-shadow: 0 0 28px rgba(155,93,229,0.35)"
+      hover_glow: "0 0 40px rgba(155,93,229,0.55)"
+    outline:
+      bg:     "transparent"
+      border: "1px solid rgba(255,255,255,0.10)"
+      color:  "text.primary"
+      hover_bg: "surface"
+    shape:    "pill (border-radius: 100px)"
+    padding:  "13-14px vertical / 26-28px horizontal"
+    hover:    "translateY(-2px)"
+
+  card:
+    bg:           "surface (rgba(255,255,255,0.04))"
+    border:       "1px solid border.default"
+    radius:       "16px"
+    hover_border: "border.accent"
+    hover_lift:   "translateY(-6px)"
+    hover_shadow: "0 24px 64px rgba(0,0,0,0.50)"
+    transition:   "border-color 0.3s, transform 0.3s, box-shadow 0.3s"
+
+  tag:
+    shape:   "pill"
+    border:  "1px solid border.default"
+    color:   "text.muted"
+    bg:      "surface"
+    padding: "6px 14px"
+    size:    "0.78rem"
+    accent_variant:
+      border: "border.accent"
+      color:  "accent.primary"
+
+  badge:
+    bg:     "rgba(15, 15, 26, 0.85)"
+    blur:   "12px"
+    border: "1px solid border.default"
+    radius: "12px"
+    style:  "glassmorphism floating element"
+
+  eyebrow_label:
+    style: "small uppercase letter-spaced text above section titles"
+    color_options:
+      - "accent.primary (purple) — for section headers"
+      - "accent.secondary (orange) — for sub-sections"
+    border:  "1px solid rgba(accent, 0.30)"
+    shape:   "pill"
+
+  section_divider:
+    style: "gradient bg wash (transparent → tinted → transparent)"
+    not:   "hard borders or lines between sections"
+
+
+# ============================================================
+# VISUAL EFFECTS
+# ============================================================
+
+effects:
+
+  grid_overlay:
+    type:   "CSS grid lines"
+    color:  "rgba(155, 93, 229, 0.04-0.05)"
+    size:   "48px × 48px"
+    layer:  "position: fixed / z-index: 0 / pointer-events: none"
+    note:   "サイト全体に薄くかかるグリッド。暗いとほぼ見えないが奥行き感を演出"
+
+  glow:
+    primary:   "box-shadow: 0 0 50px rgba(155, 93, 229, 0.25)"
+    secondary: "box-shadow: 0 0 40px rgba(249, 115, 22, 0.20)"
+    cta:       "box-shadow: 0 0 28px rgba(155, 93, 229, 0.35)"
+    note:      "使いすぎない。1セクションに1〜2カ所が上品"
+
+  glassmorphism:
+    blur:    "backdrop-filter: blur(20px)"
+    bg:      "rgba(8-15, 8-15, 15-26, 0.70-0.90)"
+    border:  "rgba(255,255,255,0.07-0.10)"
+    use_on:  "nav / floating badges / modal overlays"
+
+  text_gradient:
+    technique: "-webkit-background-clip: text / -webkit-text-fill-color: transparent"
+    use_on:    "logo / hero title accent / stat numbers"
+    direction: "135deg (斜め) が自然"
+
+  animation:
+    fade_in:
+      type:      "opacity 0→1 + translateY 28px→0"
+      duration:  "0.65s"
+      easing:    "ease"
+      trigger:   "IntersectionObserver (スクロール連動)"
+    stagger:
+      delay:     "0.08s × index"
+      use_on:    "card groups / step lists"
+    hover_lift:
+      type:      "translateY(-4px to -6px)"
+      duration:  "0.2-0.3s"
+    image_zoom:
+      type:      "scale(1.04-1.05) on card:hover"
+      duration:  "0.5s"
+      overflow:  "hidden on parent"
+    pulse:
+      type:      "opacity 1→0.4→1"
+      duration:  "2s infinite"
+      use_on:    "status dot (online indicator)"
+
+
+# ============================================================
+# ATMOSPHERE / MOOD GUIDE
+# ============================================================
+
+atmosphere:
+  tone: |
+    「高品質・信頼・前衛的」を同時に伝えるデザイン。
+    暗い背景は高級感と集中を促し、紫のネオンは未来感・創造性を、
+    オレンジは温かみと人間性を補完する。
+    過剰な装飾を排し、余白と微妙なエフェクトで洗練を表現する。
+
+  do:
+    - "暗い背景で画像・コンテンツを引き立てる"
+    - "グラデーションテキストは見出しの一部だけに使う"
+    - "カードのホバーアニメーションは控えめ（6px以下の浮き上がり）"
+    - "フォントは細め〜標準（300-600）。太すぎると野暮ったい"
+    - "余白を大胆に取る（セクション間 100-120px）"
+    - "グロー効果はアクセントカラーのボタン・メイン画像のみ"
+    - "ステータスドット（緑の点滅）でライブ感・信頼感を演出"
+
+  dont:
+    - "全要素にグラデーションをかけない"
+    - "アクセントカラーを3色以上混在させない"
+    - "カードに重いドロップシャドウを多用しない"
+    - "文字を白100%にしない（#f0eef6程度の柔らかいオフホワイト）"
+    - "背景を真っ黒(#000)にしない（#08080f程度の深みのある黒）"
+    - "セクションを硬い罫線で区切らない（グラデーションで溶かす）"
+
+
+# ============================================================
+# PROMPT TEMPLATE (for AI code generation)
+# ============================================================
+
+ai_prompt_template: |
+  以下のデザイントークンに従って、[用途を記述] のウェブサイトを実装してください。
+
+  ## デザインシステム: Dark Neon Luxury
+
+  ### カラーパレット
+  - 背景: #08080f（ベース）/ #0f0f1a（セカンダリ）
+  - アクセント1（紫）: #9b5de5 / 暗め: #6d28d9
+  - アクセント2（オレンジ）: #f97316 / 暗め: #c2410c
+  - テキスト: #f0eef6（メイン）/ #8b8a9a（ミュート）
+  - ボーダー: rgba(255,255,255,0.08)
+
+  ### タイポグラフィ
+  - フォント: Inter, Noto Sans JP
+  - ヒーロー見出し: clamp(2.4rem, 5vw, 4rem) / 字間 -0.02em
+  - セクションラベル: 0.72rem / 大文字 / 字間 0.20em
+  - 本文: 1rem / 行高 1.7 / 太さ 300-400
+
+  ### エフェクト
+  - グリッドオーバーレイ: rgba(155,93,229,0.04-0.05) / 48px格子
+  - ガラスモーフィズム: backdrop-filter:blur(20px) + 半透明背景（nav等）
+  - グラデーションテキスト: -webkit-background-clip:text（見出し一部のみ）
+  - カードホバー: translateY(-6px) + border-color変化 + 微妙なグロー
+  - スクロールフェードイン: opacity+translateY / IntersectionObserver
+
+  ### 雰囲気・方針
+  - 余白を大胆に取る（セクション間 120px）
+  - グロー・グラデーションは使いすぎない
+  - 全体的に「高級感×未来感」を維持する
+  - ボタンはピル型。プライマリは紫グラデーション＋グロー
+  - カードは薄い半透明背景＋細いボーダー

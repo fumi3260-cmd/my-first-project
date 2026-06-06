@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MOC — AI Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#08080f;color:#f0eef6;overflow-x:hidden}
+
+/* grid bg */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(155,93,229,.05)1px,transparent 1px),linear-gradient(90deg,rgba(155,93,229,.05)1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:99;display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:rgba(8,8,15,.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{font-weight:700;font-size:.95rem;letter-spacing:.1em;background:linear-gradient(90deg,#9b5de5,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:#8b8a9a;text-decoration:none;font-size:.85rem;transition:color.2s}
+.nav-links a:hover{color:#f0eef6}
+
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding:100px 40px 60px;max-width:1100px;margin:0 auto;gap:60px}
+.hero-left{flex:1}
+.eyebrow{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#9b5de5;border:1px solid rgba(155,93,229,.3);border-radius:100px;padding:5px 14px;margin-bottom:20px}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:20px}
+.grad{background:linear-gradient(135deg,#9b5de5,#e879f9,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#8b8a9a;font-size:1rem;font-weight:300;line-height:1.7;margin-bottom:36px;max-width:420px}
+.cta{display:flex;gap:14px}
+.btn{display:inline-flex;align-items:center;padding:13px 26px;border-radius:100px;font-size:.88rem;font-weight:600;text-decoration:none;letter-spacing:.02em;transition:transform.2s,box-shadow.2s;border:none;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn-p{background:linear-gradient(135deg,#6d28d9,#9b5de5);color:#fff;box-shadow:0 0 24px rgba(155,93,229,.3)}
+.btn-p:hover{box-shadow:0 0 36px rgba(155,93,229,.5)}
+.btn-o{background:transparent;color:#f0eef6;border:1px solid rgba(255,255,255,.1)}
+.btn-o:hover{background:rgba(255,255,255,.04)}
+
+/* hero images */
+.hero-right{flex:1;position:relative;height:420px}
+.img-main{position:absolute;right:0;top:0;width:75%;height:88%;object-fit:cover;border-radius:14px;box-shadow:0 0 50px rgba(155,93,229,.2),0 24px 48px rgba(0,0,0,.5)}
+.img-sm{position:absolute;left:0;bottom:0;width:50%;height:52%;object-fit:cover;border-radius:14px;box-shadow:0 0 30px rgba(249,115,22,.15),0 12px 28px rgba(0,0,0,.4);border:2px solid rgba(249,115,22,.2)}
+.badge{position:absolute;top:20px;left:0;background:rgba(15,15,26,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 16px;font-size:.75rem;color:#8b8a9a;white-space:nowrap}
+.dot{display:inline-block;width:7px;height:7px;background:#22c55e;border-radius:50%;margin-right:7px;box-shadow:0 0 7px #22c55e;animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* section */
+.section{max-width:1100px;margin:0 auto;padding:100px 40px}
+.s-eye{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#f97316;margin-bottom:10px}
+.s-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+.s-desc{color:#8b8a9a;font-size:.95rem;font-weight:300;margin-bottom:48px;max-width:500px}
+
+/* works grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;transition:border-color.3s,transform.3s,box-shadow.3s}
+.card:hover{border-color:rgba(155,93,229,.5);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 30px rgba(155,93,229,.1)}
+.card img{width:100%;height:200px;object-fit:cover;transition:transform.5s}
+.card:hover img{transform:scale(1.05)}
+.card-body{padding:20px}
+.cat{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9b5de5;margin-bottom:8px}
+.card-title{font-size:.95rem;font-weight:600;margin-bottom:8px;line-height:1.4}
+.card-desc{font-size:.8rem;color:#8b8a9a;font-weight:300;line-height:1.6;margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.68rem;padding:3px 9px;border-radius:100px;border:1px solid rgba(255,255,255,.08);color:#8b8a9a}
+
+/* featured */
+.featured{grid-column:span 3;display:grid;grid-template-columns:1.3fr 1fr}
+.featured img{height:100%;min-height:240px}
+.featured .card-body{padding:32px 28px;display:flex;flex-direction:column;justify-content:center}
+.featured .card-title{font-size:1.1rem}
+
+/* contact */
+#contact{background:linear-gradient(180deg,transparent,rgba(249,115,22,.04),transparent)}
+.cbox{text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:64px 40px;background:linear-gradient(135deg,rgba(155,93,229,.08),transparent,rgba(249,115,22,.06));position:relative;overflow:hidden}
+.cbox::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:360px;height:360px;background:radial-gradient(circle,rgba(155,93,229,.12),transparent 70%);pointer-events:none}
+.cbox h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+.cbox p{color:#8b8a9a;font-size:.95rem;font-weight:300;margin-bottom:32px}
+.cbox .cta{justify-content:center}
+
+/* footer */
+footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 40px;display:flex;justify-content:space-between;font-size:.78rem;color:#8b8a9a}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Fumi.ai</span>
+  <ul class="nav-links">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div id="hero">
+  <div class="hero-left">
+    <span class="eyebrow">AI &amp; Automation Developer</span>
+    <h1>テクノロジーで<br>体験を<br><span class="grad">再定義する。</span></h1>
+    <p class="sub">AI・自動化・データ活用を軸に、業務プロセスの最適化からユーザー体験のデザインまでを一貫して手がけます。</p>
+    <div class="cta">
+      <a href="#works" class="btn btn-p">実績を見る →</a>
+      <a href="#contact" class="btn btn-o">お問い合わせ</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="IMG_5046.JPG" class="img-main" alt=""/>
+    <img src="IMG_2662.jpeg" class="img-sm" alt=""/>
+    <div class="badge"><span class="dot"></span>新規案件受付中</div>
+  </div>
+</div>
+
+<!-- Works -->
+<div class="section" id="works">
+  <p class="s-eye">Works</p>
+  <h2 class="s-title">実績・成果物</h2>
+  <p class="s-desc">AI・自動化を活用してデリバリーしたプロジェクトの一覧です。</p>
+  <div class="grid">
+    <div class="card featured">
+      <img src="IMG_5043.JPG" alt=""/>
+      <div class="card-body">
+        <p class="cat">AI × 施設運営</p>
+        <h3 class="card-title">ラグジュアリースパ施設<br>予約・顧客体験のAI最適化</h3>
+        <p class="card-desc">顧客データをAIで分析し、最適な予約タイミングとパーソナライズされた体験提案を自動生成。リピート率40%向上・工数60%削減を実現。</p>
+        <div class="tags">
+          <span class="tag">Claude API</span>
+          <span class="tag">Python</span>
+          <span class="tag">Make</span>
+          <span class="tag">Notion</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="IMG_5046.JPG" alt=""/>
+      <div class="card-body">
+        <p class="cat">IoT × 自動化</p>
+        <h3 class="card-title">施設環境AIスマート制御</h3>
+        <p class="card-desc">照明・温度の自動最適化システムを構築。予約情報と連動してリアルタイム制御。</p>
+        <div class="tags"><span class="tag">IoT API</span><span class="tag">Python</span><span class="tag">Zapier</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="IMG_2662.jpeg" alt=""/>
+      <div class="card-body">
+        <p class="cat">予測分析 × 運用</p>
+        <h3 class="card-title">設備メンテナンス予測AI</h3>
+        <p class="card-desc">センサーデータから異常を早期検知し、メンテナンス時期を自動通知。ダウンタイムをゼロへ。</p>
+        <div class="tags"><span class="tag">機械学習</span><span class="tag">Python</span><span class="tag">Slack Bot</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="section" id="contact">
+  <div class="cbox">
+    <h2>一緒に、次を作りましょう。</h2>
+    <p>AI・自動化導入のご相談はお気軽にどうぞ。通常24時間以内にご返信します。</p>
+    <div class="cta">
+      <a href="mailto:fumi3260@gmail.com" class="btn btn-p">✉️ メールで相談する</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Fumi.ai</span>
+  <span>Built with AI × Design</span>
+</footer>
+
+</body>
+</html>
