@@ -47,15 +47,13 @@ def get_all_users():
     return result
 
 def save_users_to_file(filename):
-    f = open(filename, 'w')
-    json.dump(users, f)
-    f.close()
+    with open(filename, 'w') as f:
+        json.dump(users, f)
 
 def load_users_from_file(filename):
     global users
-    f = open(filename, 'r')
-    users = json.load(f)
-    f.close()
+    with open(filename, 'r') as f:
+        users = json.load(f)
 
 def search_users(query):
     result = []
@@ -67,6 +65,7 @@ def search_users(query):
 def fetch_user_from_api(user_id):
     url = "http://api.example.com/users/" + str(user_id)
     response = requests.get(url)
+    response.raise_for_status()
     data = response.json()
     return data
 
